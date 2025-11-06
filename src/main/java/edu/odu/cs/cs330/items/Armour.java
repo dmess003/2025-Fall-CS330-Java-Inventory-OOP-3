@@ -169,6 +169,7 @@ public class Armour extends Equippable {
         this.getName(),
         this.getDurability(),
         this.getDefense(),
+        this.getMaterial(),
         this.getModifier(), this.getModifierLevel(),
         this.getElement());
     }
