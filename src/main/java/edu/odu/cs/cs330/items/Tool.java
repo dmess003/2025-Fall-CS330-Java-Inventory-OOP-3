@@ -70,7 +70,7 @@ public class Tool extends Equippable {
     public int requiredNumberOfValues()
     {
         // What is the correct return value?
-        return -1;
+        return 6;
     }
 
     @Override
@@ -79,7 +79,11 @@ public class Tool extends Equippable {
         this.setName(tokens[0]);
 
         // Complete this method.
-
+        this.setDurability(Integer.parseInt(tokens[1]));
+        this.setSpeed(Integer.parseInt(tokens[2]));
+        this.setMaterial(tokens[3]);
+        this.setModifier(tokens[4]);
+        this.setModifierLevel(Integer.parseInt(tokens[5]));
     }
 
     /**
@@ -117,6 +121,16 @@ public class Tool extends Equippable {
         Tool rhsItem = (Tool) rhs;
 
         // Replace the return
+        if (
+            rhsItem.getName().equals(this.getName()) &&
+            rhsItem.getSpeed() == this.getSpeed() &&
+            rhsItem.getMaterial().equals(this.getMaterial()) &&
+            rhsItem.getModifier().equals(this.getModifier()) &&
+            rhsItem.getModifierLevel() == this.getModifierLevel())
+        {
+            return true;
+        }
+
         return false;
     }
 
@@ -128,7 +142,15 @@ public class Tool extends Equippable {
     public int hashCode()
     {
         // Replace the return
-        return -1;
+        int result = 0;
+
+        result += this.getName().hashCode();
+        result += this.getSpeed();
+        result += this.getMaterial().hashCode();
+        result += this.getModifier().hashCode();
+        result += this.getModifierLevel();
+
+        return result;
     }
 
     /**
@@ -138,6 +160,11 @@ public class Tool extends Equippable {
     public String toString()
     {
         // Use String.format and the provided FMT_STR
-        return "  Not Implemented";
+        return String.format(FMT_STR, 
+        this.getName(),
+        this.getDurability(),
+        this.getSpeed(),
+        this.getMaterial(),
+        this.getModifier(), this.getModifierLevel());
     }
 }

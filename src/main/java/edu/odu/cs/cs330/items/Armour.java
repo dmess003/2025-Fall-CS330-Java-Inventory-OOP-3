@@ -173,7 +173,3 @@ public class Armour extends Equippable {
         this.getElement());
     }
 }
-
-
-
-
