@@ -165,16 +165,12 @@ public class Armour extends Equippable {
     public String toString()
     {
         // Use String.format and the provided FMT_STR
-        return String.join(
-            System.lineSeparator(),
-            String.format("  Nme: %s", super.getName()),
-            String.format("  Dur: %d", super.getDurability()),
-            String.format("  Def: %d", this.getDefense()),
-            String.format("  Mtl: %s", super.getMaterial()),
-            String.format("  Mdr: %s (Lvl %d)", super.getModifier(), super.getModifierLevel()),
-            String.format("  Emt: %s", super.getElement()),
-            ""
-        );
+        return String.format(FMT_STR, 
+        this.getName(),
+        this.getDurability(),
+        this.getDefense(),
+        this.getModifier(), this.getModifierLevel(),
+        this.getElement());
     }
 }
 
