@@ -71,7 +71,7 @@ public class Armour extends Equippable {
     public int requiredNumberOfValues()
     {
         // What is the correct return value?
-        return -1;
+        return 7;
     }
 
     @Override
@@ -80,7 +80,12 @@ public class Armour extends Equippable {
         this.setName(tokens[0]);
 
         // Add the missing lines
-
+        this.setDurability(Integer.parseInt(tokens[1]));
+        this.setDefense(Integer.parseInt(tokens[2]));
+        this.setMaterial(tokens[3]);
+        this.setModifier(tokens[4]);
+        this.setModifierLevel(Integer.parseInt(tokens[5]));
+        this.setElement(tokens[6]);
     }
 
     /**
@@ -90,7 +95,17 @@ public class Armour extends Equippable {
     public Item clone()
     {
         // Replace the return
-        return new Armour();
+        Armour copy = new Armour();
+
+        copy.setName(this.getName());
+        copy.setDurability(this.getDurability());
+        copy.setDefense(this.getDefense());
+        copy.setMaterial(this.getMaterial());
+        copy.setModifier(this.getModifier());
+        copy.setModifierLevel(this.getModifierLevel());
+        copy.setElement(this.getElement());
+
+        return copy;
     }
 
     /**
@@ -109,8 +124,18 @@ public class Armour extends Equippable {
         Armour rhsItem = (Armour) rhs;
 
         // Replace this return
-        return false;
+        if (
+            rhsItem.getName().equals(this.getName()) &&
+            rhsItem.getMaterial().equals(this.getMaterial()) &&
+            rhsItem.getModifier().equals(this.getModifier()) &&
+            rhsItem.getModifierLevel() == this.getModifierLevel() &&
+            rhsItem.getElement().equals(this.getElement()) &&
+            rhsItem.getDefense() == this.getDefense())
+        {
+            return true;
+        }
 
+        return false;
     }
 
     /**
@@ -121,7 +146,16 @@ public class Armour extends Equippable {
     public int hashCode()
     {
         // Replace this return
-        return -1;
+        int result = 0;
+
+        result += this.getName().hashCode();
+        result += this.getMaterial().hashCode();
+        result += this.getModifier().hashCode();
+        result += this.getModifierLevel();
+        result += this.getElement().hashCode();
+        result += this.getDefense();
+
+        return result;
     }
 
     /**
@@ -131,7 +165,16 @@ public class Armour extends Equippable {
     public String toString()
     {
         // Use String.format and the provided FMT_STR
-        return "  Not Implemented";
+        return String.join(
+            System.lineSeparator(),
+            String.format("  Nme: %s", super.getName()),
+            String.format("  Dur: %d", super.getDurability()),
+            String.format("  Def: %d", this.getDefense()),
+            String.format("  Mtl: %s", super.getMaterial()),
+            String.format("  Mdr: %s (Lvl %d)", super.getModifier(), super.getModifierLevel()),
+            String.format("  Emt: %s", super.getElement()),
+            ""
+        );
     }
 }
 
