@@ -110,7 +110,7 @@ public class Consumable extends Item {
 
         // Complete this method.
         this.setEffect(tokens[1]);
-        this.setNumberOfUses(Integer.parseInt(tokens[2]));
+        this.setNumberOfUses((int) Integer.parseInt(tokens[2]));
     }
 
     /**
