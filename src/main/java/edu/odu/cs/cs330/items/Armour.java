@@ -25,7 +25,7 @@ public class Armour extends Equippable {
     public static final String FMT_STR = String.join(
         "",
         "  Nme: %s%n",
-        "  Dur: %s%n",
+        "  Dur: %d%n",
         "  Def: %d%n",
         "  Mtl: %s%n",
         "  Mdr: %s (Lvl %d)%n",
